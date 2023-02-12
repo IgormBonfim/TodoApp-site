@@ -1,0 +1,25 @@
+<div class="card p-4 shadow">
+  <div class="row">
+    <div class="fw-bold col-lg-3">
+      Nome
+    </div>
+
+    <div class="fw-bold col-lg-3">
+      Status
+    </div>
+
+    <div class="fw-bold col-lg-2">
+      Cadastro
+    </div>
+
+    <div class="fw-bold col-lg-2">
+      Conclusão
+    </div>
+
+    <div class="fw-bold col-lg-2">
+      Ações
+    </div>
+
+  </div>
+  <app-tarefa *ngFor="let tarefa of tarefas" [tarefa]="tarefa"></app-tarefa>
+</div>

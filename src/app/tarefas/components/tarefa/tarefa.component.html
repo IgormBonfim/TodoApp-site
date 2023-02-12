@@ -1,0 +1,22 @@
+<div class="row border py-3 my-2">
+  <div class="col-lg-3">
+    {{ tarefa.nome }}
+  </div>
+
+  <div class="col-lg-3">
+    {{ tarefa.status }}
+  </div>
+
+  <div class="col-lg-2">
+    {{ tarefa.dataCadastro | date: 'dd/MM/YYYY' }}
+  </div>
+
+  <div class="col-lg-2">
+    {{ tarefa.dataConclusao | date:'dd/MM/YYYY' }}
+  </div>
+
+  <div class="col-lg-2 d-flex">
+    <button class="btn btn-primary">Detalhes</button>
+  </div>
+
+</div>
