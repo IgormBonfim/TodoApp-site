@@ -21,7 +21,7 @@ import { CoreModule } from 'src/app/core/core.module';
     CoreModule,
     RouterModule,
     FontAwesomeModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({})
   ],
   providers: [
   ],
