@@ -1,0 +1,19 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TarefasService {
+
+  public apiUrl = environment.ApiBaseUrl + "tarefas/"
+
+  constructor(private httpClient: HttpClient) { }
+
+  listarTarefas(): Observable<TarefaResponse[]> {
+    return this.httpClient.get<TarefaResponse[]>(this.apiUrl);
+  }
+}
