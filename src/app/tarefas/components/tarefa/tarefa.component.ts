@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
 
@@ -10,6 +10,7 @@ import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response
 export class TarefaComponent implements OnInit {
 
   @Input() public tarefa!: TarefaResponse
+  @Output() public onDetalhes = new EventEmitter<string>();
 
   constructor() {}
 
@@ -17,4 +18,7 @@ export class TarefaComponent implements OnInit {
 
   }
 
+  botaoDetalhes() {
+    this.onDetalhes.emit(this.tarefa.id);
+  }
 }

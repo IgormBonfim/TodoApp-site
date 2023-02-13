@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h3 class="modal-title text-center fw-bold text-primary">Detalhes da tarefa</h3>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div *ngIf="tarefa">
+    <div class="">
+
+      <div class="p-2">
+        <span class="fw-bold fs-4 text-primary">Id:</span>
+        <span class="fs-5 text-capitalize"> {{ tarefa.id }} </span>
+      </div>
+
+      <div class="p-2">
+        <span class="fw-bold fs-4 text-primary">Nome:</span>
+        <span style="text-align: justify;" class="fs-5 text-capitalize"> {{ tarefa.nome }} </span>
+      </div>
+
+      <div class="p-2">
+        <span class="fw-bold fs-4 text-primary">Detalhes:</span>
+        <span style="text-align: justify;" class="text-capitalize fs-5"> {{ tarefa.detalhes }} </span>
+      </div>
+
+      <div class="p-2">
+        <span class="fw-bold fs-4 text-primary">Data de cadastro:</span>
+        <span class="fs-5"> {{ tarefa.dataCadastro | date: "dd/MM/YYYY" }} </span>
+      </div>
+
+      <div class="p-2">
+        <span class="fw-bold fs-4 text-primary">Status:</span>
+        <span class="fs-5 text-capitalize"> {{ tarefa.status }} </span>
+      </div>
+
+      <div *ngIf="tarefa.dataConclusao" class="p-2">
+        <span class="fw-bold fs-4 text-primary">Data de conclusão:</span>
+        <span class="fs-5"> {{ tarefa.dataConclusao | date: "dd/MM/YYYY" }} </span>
+      </div>
+
+      <div *ngIf="tarefa.dataAtualizacao && !tarefa.dataConclusao" class="p-2">
+        <span class="fw-bold fs-4 text-primary">Última edição:</span>
+        <span class="fs-5"> {{ tarefa.dataAtualizacao | date: "dd/MM/YYYY" || "Tarefa ainda não atualizada" }} </span>
+      </div>
+
+      <div class="d-flex justify-content-center">
+          <div class="px-4">
+            <button class="btn btn-danger" (click)="botaoDeletar()">Deletar</button>
+          </div>
+          <div class="px-4">
+            <button class="btn btn-warning" (click)="botaoEditar()">Editar</button>
+          </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+

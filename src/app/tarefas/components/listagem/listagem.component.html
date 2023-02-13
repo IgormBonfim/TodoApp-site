@@ -23,7 +23,7 @@
   </div>
 
   <div *ngIf="tarefas.length > 0">
-    <app-tarefa *ngFor="let tarefa of tarefas" [tarefa]="tarefa"></app-tarefa>
+    <app-tarefa *ngFor="let tarefa of tarefas" [tarefa]="tarefa" (onDetalhes)="exibirDetalhesTarefa($event)"></app-tarefa>
   </div>
 
   <div *ngIf="tarefas.length <= 0" class="p-2 col-12 text-center">
