@@ -10,6 +10,8 @@ import { TarefaComponent } from './components/tarefa/tarefa.component';
 import { TarefasListagemComponent } from './paginas/tarefas-listagem/tarefas-listagem.component';
 import { TarefasRoutingModule } from './tarefas-routing.module';
 import { AdicionarTarefaComponent } from './components/adicionar-tarefa/adicionar-tarefa.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { TarefasDetalhesComponent } from './components/tarefas-detalhes/tarefas-detalhes.component';
 
 
 @NgModule({
@@ -18,14 +20,16 @@ import { AdicionarTarefaComponent } from './components/adicionar-tarefa/adiciona
     TarefaComponent,
     FiltrosComponent,
     ListagemComponent,
-    AdicionarTarefaComponent
+    AdicionarTarefaComponent,
+    TarefasDetalhesComponent
   ],
   imports: [
     CommonModule,
     TarefasRoutingModule,
     FontAwesomeModule,
     PaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ]
 })
 export class TarefasModule { }
