@@ -10,6 +10,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { CoreModule } from 'src/app/core/core.module';
     RouterModule,
     FontAwesomeModule,
     ToastrModule.forRoot({}),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxSpinnerModule.forRoot()
   ],
   providers: [
   ],

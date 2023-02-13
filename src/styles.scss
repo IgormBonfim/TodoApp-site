@@ -88,6 +88,9 @@ $theme-colors: (
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/ngx-toastr/toastr.css';
 @import 'node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss';
+@import 'node_modules/ngx-spinner/animations/ball-scale-multiple.css';
+@import 'node_modules/ngx-spinner/animations/ball-clip-rotate.css';
+@import 'node_modules/ngx-spinner/animations/ball-pulse.css';
 
 body {
   background-color: #f0f0f0;
