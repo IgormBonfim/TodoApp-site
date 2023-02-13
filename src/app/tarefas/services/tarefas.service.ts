@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { TarefaAtualizarRequest } from 'src/app/tarefas/models/requests/tarefa-atualizar.request';
 import { TarefaInserirRequest } from 'src/app/tarefas/models/requests/tarefa-inserir.request';
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
 import { environment } from 'src/environments/environment';
@@ -29,5 +30,9 @@ export class TarefasService {
 
   excluirTarefa(id: string): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}${id}`);
+  }
+
+  atualizarTarefa(id: string, request: TarefaAtualizarRequest): Observable<TarefaResponse> {
+    return this.httpClient.put<TarefaResponse>(`${this.apiUrl}${id}`, request);
   }
 }
