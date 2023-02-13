@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { TarefaInserirRequest } from 'src/app/tarefas/models/requests/tarefa-inserir.request';
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
 import { environment } from 'src/environments/environment';
 
@@ -15,5 +17,9 @@ export class TarefasService {
 
   listarTarefas(): Observable<TarefaResponse[]> {
     return this.httpClient.get<TarefaResponse[]>(this.apiUrl);
+  }
+
+  adicionarTarefa(request: TarefaInserirRequest): Observable<TarefaResponse> {
+    return this.httpClient.post<TarefaResponse>(this.apiUrl, request);
   }
 }

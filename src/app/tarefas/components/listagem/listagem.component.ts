@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { TarefasService } from 'src/app/shared/services/tarefas.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
+import { AdicionarTarefaComponent } from 'src/app/tarefas/components/adicionar-tarefa/adicionar-tarefa.component';
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
 
 @Component({
@@ -10,26 +11,24 @@ import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response
 })
 export class ListagemComponent implements OnInit {
 
-  public tarefas!: TarefaResponse[];
+  @Input() public tarefas: TarefaResponse[] = [];
+  @Output() public onAdicionarHide = new EventEmitter();
 
-  constructor(private tarefasService: TarefasService) {}
+  constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
-    this.listar();
+
   }
 
-  // public tarefa = new TarefaResponse({
-  //   id: "Blablalba",
-  //   nome: "Nome tarefa",
-  //   detalhes: "Detalhes da tarefa",
-  //   status: "Andamento"
-  // })
+  abrirModalCadastro() {
+    let bsModalRef: BsModalRef = this.modalService.show(AdicionarTarefaComponent);
 
-  public listar() {
-    this.tarefasService.teste().subscribe({
-      next: (res : TarefaResponse[]) => {
-        this.tarefas = res;
+    let resultado = bsModalRef.content.tarefaAdicionada;
+    resultado.asObservable().subscribe({
+      next: () => {
+        this.onAdicionarHide.emit()
       }
     })
   }
+
 }

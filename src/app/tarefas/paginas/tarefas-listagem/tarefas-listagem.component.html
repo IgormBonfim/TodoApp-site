@@ -1,13 +1,15 @@
 <div class="container">
 
+  <button class="btn btn-danger" (click)="filtro = !filtro"> CLICAR</button>
+
   <div class="row">
 
-    <div class="col-3">
+    <div *ngIf="filtro" class="col-lg-3">
       <app-filtros></app-filtros>
     </div>
 
-    <div class="col-9">
-      <app-listagem></app-listagem>
+    <div [ngClass]="{'col-lg-9': filtro, 'col-12': !filtro}">
+      <app-listagem [tarefas]="tarefas" (onAdicionarHide)="listarTarefas()"></app-listagem>
     </div>
 
   </div>
