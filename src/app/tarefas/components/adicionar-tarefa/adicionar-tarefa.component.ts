@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 export class AdicionarTarefaComponent implements OnInit {
 
   public tarefaForm!: FormGroup
-  public tarefaAdicionada!: Subject<boolean>;
+  public subject!: Subject<boolean>;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -25,7 +25,7 @@ export class AdicionarTarefaComponent implements OnInit {
   ngOnInit(): void {
     this.bsModelRef.setClass("modal-lg");
     this.construirFormulario()
-    this.tarefaAdicionada = new Subject()
+    this.subject = new Subject()
   }
 
   construirFormulario() {
@@ -43,7 +43,7 @@ export class AdicionarTarefaComponent implements OnInit {
     this.tarefasService.adicionarTarefa(request).subscribe({
       next: (res: TarefaResponse) => {
         this.bsModelRef.hide()
-        this.tarefaAdicionada.next(true);
+        this.subject.next(true);
       }
     });
   }

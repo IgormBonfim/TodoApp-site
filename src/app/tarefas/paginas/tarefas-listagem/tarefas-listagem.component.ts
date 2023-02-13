@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
@@ -16,6 +17,7 @@ export class TarefasListagemComponent implements OnInit {
   public tarefas: TarefaResponse[] = [];
 
   constructor(
+    private spinner: NgxSpinnerService,
     private toastService: ToastService,
     private tarefasService: TarefasService) {}
 
@@ -24,16 +26,15 @@ export class TarefasListagemComponent implements OnInit {
   }
 
   listarTarefas() {
-    console.log("teste");
-
+    this.spinner.show()
     this.tarefasService.listarTarefas().subscribe({
       next: (res: TarefaResponse[]) => {
         this.tarefas = res;
-        console.log(this.tarefas);
+        this.spinner.hide();
       },
       error: (error: HttpErrorResponse) => {
+        this.spinner.hide();
         this.toastService.erro("Erro ao carregar tarefas", error.message)
-        console.log(error);
       }
     })
   }

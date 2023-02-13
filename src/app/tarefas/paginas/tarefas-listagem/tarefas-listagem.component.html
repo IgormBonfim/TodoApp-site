@@ -9,7 +9,7 @@
     </div>
 
     <div [ngClass]="{'col-lg-9': filtro, 'col-12': !filtro}">
-      <app-listagem [tarefas]="tarefas" (onAdicionarHide)="listarTarefas()"></app-listagem>
+      <app-listagem [tarefas]="tarefas" (onModalHide)="listarTarefas()"></app-listagem>
     </div>
 
   </div>
