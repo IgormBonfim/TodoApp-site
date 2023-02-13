@@ -19,7 +19,15 @@ export class TarefasService {
     return this.httpClient.get<TarefaResponse[]>(this.apiUrl);
   }
 
+  recuperarTarefa(id: string): Observable<TarefaResponse> {
+    return this.httpClient.get<TarefaResponse>(`${this.apiUrl}${id}`)
+  }
+
   adicionarTarefa(request: TarefaInserirRequest): Observable<TarefaResponse> {
     return this.httpClient.post<TarefaResponse>(this.apiUrl, request);
+  }
+
+  excluirTarefa(id: string): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}${id}`);
   }
 }
