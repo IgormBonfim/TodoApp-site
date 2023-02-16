@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { AdicionarTarefaComponent } from 'src/app/tarefas/components/adicionar-tarefa/adicionar-tarefa.component';
@@ -15,7 +16,9 @@ export class ListagemComponent implements OnInit {
   @Input() public tarefas: TarefaResponse[] = [];
   @Output() public onModalHide = new EventEmitter();
 
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private router: Router,
+    private modalService: BsModalService) {}
 
   ngOnInit() {
 
@@ -30,6 +33,13 @@ export class ListagemComponent implements OnInit {
     resultado.asObservable().subscribe({
       next: () => {
         this.emitirEventoModal();
+      }
+    })
+
+    let edicao = bsModalRef.content.editar;
+    edicao.asObservable().subscribe({
+      next: (id: string) => {
+        this.irParaEdicao(id);
       }
     })
   }
@@ -50,6 +60,10 @@ export class ListagemComponent implements OnInit {
 
     let bsModalRef: BsModalRef = this.modalService.show(TarefasDetalhesComponent, options);
     this.gerenciarModal(bsModalRef);
+  }
+
+  irParaEdicao(id: string) {
+    this.router.navigate(['/tarefas/' + id + '/editar'])
   }
 
 }

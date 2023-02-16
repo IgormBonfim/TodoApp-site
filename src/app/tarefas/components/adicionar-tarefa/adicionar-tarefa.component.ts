@@ -14,7 +14,7 @@ import { Subject } from 'rxjs';
 })
 export class AdicionarTarefaComponent implements OnInit {
 
-  public tarefaForm!: FormGroup
+  public tarefaForm!: FormGroup;
   public subject!: Subject<boolean>;
 
   constructor(

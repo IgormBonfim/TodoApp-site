@@ -18,18 +18,20 @@ export class TarefasDetalhesComponent implements OnInit{
   public idTarefa!: string;
   public tarefa!: TarefaResponse;
   public subject!: Subject<boolean>;
+  public editar!: Subject<string>;
 
 
   constructor(
     private alertsService: AlertsService,
     private tarefasService: TarefasService,
     private toastService: ToastService,
-    public bsModelRef: BsModalRef) {}
+    private bsModelRef: BsModalRef) {}
 
   ngOnInit(): void {
     // this.bsModelRef.setClass("modal-lg");
     this.recuperarTarefa();
     this.subject = new Subject();
+    this.editar = new Subject();
   }
 
   recuperarTarefa() {
@@ -45,7 +47,8 @@ export class TarefasDetalhesComponent implements OnInit{
   }
 
   botaoEditar() {
-
+    this.closeModal();
+    this.editar.next(this.idTarefa);
   }
 
   botaoDeletar() {
@@ -66,7 +69,7 @@ export class TarefasDetalhesComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         this.deletarTarefa();
-        this.bsModelRef.hide();
+        this.closeModal();
       }
     })
   }
