@@ -1,14 +1,18 @@
 <div class="row border py-3 my-2">
-  <div class="col-lg-3 d-flex align-items-center text-capitalize">
+  <div class="col-lg-2 d-flex align-items-center text-capitalize">
     {{ tarefa.nome }}
   </div>
 
-  <div class="col-lg-3 d-flex align-items-center text-capitalize">
+  <div class="col-lg-2 d-flex align-items-center text-capitalize">
     {{ tarefa.status }}
   </div>
 
   <div class="col-lg-2 d-flex align-items-center">
     {{ tarefa.dataCadastro | date: 'dd/MM/YYYY' }}
+  </div>
+
+  <div class="col-lg-2 d-flex align-items-center">
+    {{ tarefa.dataAtualizacao | date: 'dd/MM/YYYY' }}
   </div>
 
   <div class="col-lg-2 d-flex align-items-center">
