@@ -1,21 +1,17 @@
 <div class="container-fluid">
-
-  <button class="btn btn-danger" (click)="filtro = !filtro"> CLICAR</button>
-
   <div class="row">
 
-    <div *ngIf="filtro" class="col-lg-2">
+    <div class="col-lg-2">
       <app-filtros></app-filtros>
     </div>
 
-    <div [ngClass]="{'col-lg-10': filtro, 'col-12': !filtro}">
-      <app-listagem [tarefas]="tarefas" (onModalHide)="listarTarefas()"></app-listagem>
+    <div class="col-lg-10">
+      <app-listagem [tarefas]="tarefas" (onModalHide)="listarTarefas()" (onTrocarPagina)="trocarPagina($event)"></app-listagem>
     </div>
 
   </div>
-
 </div>
 
-  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-pulse" [fullScreen]="true">
-    <p style="color: white" > Loading... </p>
-  </ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-pulse" [fullScreen]="true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>

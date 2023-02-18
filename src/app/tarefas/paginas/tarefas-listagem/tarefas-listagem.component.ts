@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
+import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { TarefaResponse } from 'src/app/tarefas/models/responses/tarefa.response';
 import { TarefasService } from 'src/app/tarefas/services/tarefas.service';
@@ -13,8 +14,8 @@ import { TarefasService } from 'src/app/tarefas/services/tarefas.service';
 })
 export class TarefasListagemComponent implements OnInit {
 
-  public filtro = true;
-  public tarefas: TarefaResponse[] = [];
+  public tarefas: PaginacaoResponse<TarefaResponse>;
+  public filtro: PaginacaoRequest = new PaginacaoRequest({});
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -22,13 +23,13 @@ export class TarefasListagemComponent implements OnInit {
     private tarefasService: TarefasService) {}
 
   ngOnInit(): void {
-    this.listarTarefas()
+    this.listarTarefas();
   }
 
   listarTarefas() {
     this.spinner.show()
-    this.tarefasService.listarTarefas().subscribe({
-      next: (res: TarefaResponse[]) => {
+    this.tarefasService.listarTarefas(this.filtro).subscribe({
+      next: (res: PaginacaoResponse<TarefaResponse>) => {
         this.tarefas = res;
         this.spinner.hide();
       },
@@ -37,5 +38,10 @@ export class TarefasListagemComponent implements OnInit {
         this.toastService.erro("Erro ao carregar tarefas", error.message)
       }
     })
+  }
+
+  trocarPagina(pagina: number) {
+    this.filtro.pagina = pagina;
+    this.listarTarefas();
   }
 }
