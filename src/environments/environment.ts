@@ -1,5 +1,4 @@
 export const environment = {
   production: false,
-  ApiBaseUrl: "http://localhost:25826/api/",
-  teste: true
+  ApiBaseUrl: "https://todoappmanager.up.railway.app/api/",
 };
