@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ApiBaseUrl: "https://todoappmanager.up.railway.app/api/"
+  ApiBaseUrl: "https://todoappmanager-api.up.railway.app/api/"
 };
